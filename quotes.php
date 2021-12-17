@@ -1,13 +1,10 @@
 <?php
-
 $errors = [];
-
 $quotes = [
     ['name' => '', 'quote' => ''],
 ];
 
 if (isset($_POST['name'], $_POST['quote'])) {
-
     $name = trim($_POST['name']);
     $quote = trim($_POST['quote']);
 
