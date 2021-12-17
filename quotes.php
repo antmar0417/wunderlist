@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 $errors = [];
 $quotes = [
-    ['name' => '', 'quote' => ''],
+    ['name' => 'Anton', 'quote' => 'Hello'],
 ];
 
 if (isset($_POST['name'], $_POST['quote'])) {
 
     $name = trim($_POST['name']);
-    $quote = trim($_POST['qu$quote']);
+    $quote = trim($_POST['quote']);
 
     if ($name === '') {
         $errors[] = 'You need to fill a name';
