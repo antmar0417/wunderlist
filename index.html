@@ -20,8 +20,28 @@
         </div>
         <div class="row">
           <form class="col-lg-8 offset-lg-2" action="index.php" method="post">
-            <div class="mb-3"></div>
-            <div class="mb-3"></div>
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                class="form-control"
+                placeholder="Your Name"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="quote" class="form-label">Qoute</label>
+              <textarea
+                name="qouote"
+                id="qouote"
+                class="form-control"
+              ></textarea>
+
+              <button type="submit" class="btn btn-primary">
+                Add your quote
+              </button>
+            </div>
           </form>
         </div>
       </div>
