@@ -1,4 +1,5 @@
 <?php
+
 $errors = [];
 $quotes = [
     ['name' => '', 'quote' => ''],
