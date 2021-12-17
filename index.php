@@ -1,4 +1,4 @@
-<?= 'wunderlist'; ?>
+<?php require __DIR__ . './quotes.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
