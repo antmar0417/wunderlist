@@ -1,28 +1,4 @@
-<?php $errors = [];
-
-$quotes = [
-    ['name' => 'Anton', 'quote' => 'Bil'],
-    ['name' => 'Ivan', 'quote' => 'Teater'],
-];
-
-if (isset($_POST['name'], $_POST['quote'])) {
-
-    $name = trim($_POST['name']);
-    $quote = trim($_POST['quote']);
-
-    if ($name === '') {
-        $errors[] = 'You need to fill a name';
-    }
-    if ($quote === '') {
-        $errors[] = 'Please add content into the field';
-    }
-    if (count($errors) === 0) {
-        $quotes[] = [
-            'name' => $name,
-            'quote' => $quote
-        ];
-    }
-} ?>
+<?php require __DIR__ . '/quotes.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">

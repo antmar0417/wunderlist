@@ -1,10 +1,9 @@
-<?
-
-declare(strict_types=1);
+<?php
 
 $errors = [];
+
 $quotes = [
-    ['name' => 'Anton', 'quote' => 'Hello'],
+    ['name' => '', 'quote' => ''],
 ];
 
 if (isset($_POST['name'], $_POST['quote'])) {
@@ -19,6 +18,9 @@ if (isset($_POST['name'], $_POST['quote'])) {
         $errors[] = 'Please add content into the field';
     }
     if (count($errors) === 0) {
-        $quotes[] = ['name' => $name, 'quote' => $quote];
+        $quotes[] = [
+            'name' => $name,
+            'quote' => $quote
+        ];
     }
 }
