@@ -4,16 +4,7 @@
 <article>
     <h1><?php echo $config['title']; ?></h1>
     <p>This is the home page.</p>
-
-    <?php if (isset($_SESSION['user'])) : ?>
-        <p>Welcome, <?php echo $_SESSION['user']['name']; ?>!</p>
-        <?php if (file_exists(__DIR__ . '/uploads' . '/' . $_SESSION['user']['image'])) : ?>
-            <img src="/uploads/<?= $_SESSION['user']['image'] ?>" alt="Avatar Photo" height="100px">
-        <?php endif; ?>
-        <?php if (!file_exists(__DIR__ . '/uploads' . '/' . $_SESSION['user']['image'])) : ?>
-            <img src="/uploads/unknown-avatar.jpeg" alt="Avatar Photo" height="100px">
-        <?php endif; ?>
-    <?php endif; ?>
+    <?php require __DIR__ . '/showAvatar.php'; ?>
 </article>
 
 <?php require __DIR__ . '/views/footer.php'; ?>
