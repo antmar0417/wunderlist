@@ -7,6 +7,12 @@ if (isset($_FILES['avatar'])) {
     $avatarName = $_SESSION['user']['id'] . '-' . $avatar['name'];
     $destination = __DIR__ . '/uploads' . '/' . $avatarName;
     move_uploaded_file($avatar['tmp_name'], $destination);
+
+    $id = $_SESSION['user']['id'];
+    $query = sprintf("UPDATE users
+    SET image = '$avatarName'
+    WHERE id = '$id'", $avatarName);
+    $statement = $database->query($query);
 }
 ?>
 
