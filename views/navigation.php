@@ -8,7 +8,11 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/about.php' ? 'active' : ''; ?>" href="/about.php">About</a>
+                <?php if (isset($_SESSION['user'])) : ?>
+                    <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/profile.php' ? 'active' : ''; ?>" href="/profile.php">My Profile</a>
+                <?php else : ?>
+                    <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/profile.php' ? 'active' : ''; ?>" href="/profile.php">Sign In</a>
+                <?php endif; ?>
             </li>
 
             <li class="nav-item">
