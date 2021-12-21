@@ -4,7 +4,7 @@
 
 if (isset($_FILES['avatar'])) {
     $avatar = $_FILES['avatar'];
-    $avatarName = $_SESSION['user']['id'] . '-' . $avatar['name'];
+    $avatarName = $_SESSION['user']['id'] . '-' . date('ymd') . '-' . $avatar['name'];
     $destination = __DIR__ . '/uploads' . '/' . $avatarName;
     move_uploaded_file($avatar['tmp_name'], $destination);
 
