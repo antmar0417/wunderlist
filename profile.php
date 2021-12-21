@@ -52,8 +52,33 @@ if (isset($_FILES['avatar'])) {
             </form>
         </form>
     <?php else : ?>
-        <h1>Create an account</h1>
-        <p>fill in your details in the form.</p>
+        <div class="row mt-5 justify-content-md-center">
+            <div class="col-md-6 ml-center">
+                <h1>Create an account</h1>
+                <p>Fill in the form.</p>
+                <form action="/app/users/register.php" method="post">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input class="form-control" type="text" name="name" id="name" placeholder="Your Name" required>
+                        <small class="form-text">Please provide the your name.</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input class="form-control" type="email" name="email" id="email" placeholder="your@email.com" required>
+                        <small class="form-text">Please provide the your email address.</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input class="form-control" type="password" name="password" id="password" required>
+                        <small class="form-text">Please provide the your password (passphrase).</small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Create Account</button>
+                </form>
+            </div>
+        </div>
     <?php endif; ?>
 </article>
 
