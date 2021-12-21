@@ -20,7 +20,11 @@ if (isset($_FILES['avatar'])) {
     <?php if (isset($_SESSION['user'])) : ?>
         <h1>My Profile</h1>
         <p>Customize your avatar.</p>
-        <?php require __DIR__ . '/showAvatar.php'; ?>
+        <?php if (!isset($_FILES['avatar'])) : ?>
+            <?php require __DIR__ . '/showAvatar.php'; ?>
+        <?php else : ?>
+            <?php require __DIR__ . '/updateAvatar.php'; ?>
+        <?php endif; ?>
         <form action="profile.php" method="post" enctype="multipart/form-data">
             <div>
                 <label for="avatar">Please choose an image</label>
