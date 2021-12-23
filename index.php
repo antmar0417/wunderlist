@@ -4,10 +4,8 @@
 <article>
     <h1><?php echo $config['title']; ?></h1>
     <p>This is the home page.</p>
-    <?php if (isset($_FILES['avatar'])) : ?>
-        <?php require __DIR__ . '/updateAvatar.php'; ?>
-    <?php else : ?>
-        <?php require __DIR__ . '/showAvatar.php'; ?>
+    <?php if (isset($_SESSION['user'])) : ?>
+        <img src="<?= checkIfImageExist(); ?>" alt="Avatar Photo" height="100px">
     <?php endif; ?>
 </article>
 
