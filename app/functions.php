@@ -8,7 +8,7 @@ function redirect(string $path)
     exit;
 }
 
-function checkIfImageExist()
+function checkIfAvatarExist()
 {
     if (isset($_SESSION['user'])) {
         if (file_exists(__DIR__ . '/../uploads' . '/' . $_SESSION['user']['image'])) {
@@ -17,11 +17,6 @@ function checkIfImageExist()
         } else {
             $imagePath = '/uploads/unknown-avatar.jpeg';
             echo $imagePath;
-            // echo file_exists(__DIR__ . '/../uploads' . '/' . $_SESSION['user']['image']);
         }
     }
-    // $imagePath = "/uploads/" .  $_SESSION['user']['image'];
-    // echo $imagePath;
 }
-
-checkIfImageExist();
