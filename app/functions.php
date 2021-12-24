@@ -13,10 +13,10 @@ function checkIfAvatarExist()
     if (isset($_SESSION['user'])) {
         if (file_exists(__DIR__ . '/../uploads' . '/' . $_SESSION['user']['image'])) {
             $imagePath = "/uploads" . "/" .  $_SESSION['user']['image'];
-            echo $imagePath;
+            return $imagePath;
         } else {
             $imagePath = '/uploads/unknown-avatar.jpeg';
-            echo $imagePath;
+            return $imagePath;
         }
     }
 }
