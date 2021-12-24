@@ -6,7 +6,7 @@
         <h1>My Profile</h1>
         <p>Customize your avatar.</p>
         <?php if (isset($_SESSION['user'])) : ?>
-            <img src="<?= checkIfImageExist(); ?>" alt="Avatar Photo" height="100px">
+            <img src="<?= checkIfAvatarExist(); ?>" alt="Avatar Photo" height="100px">
         <?php endif; ?>
         <form action="/app/users/avatar/upload.php" method="post" enctype="multipart/form-data">
             <div>
