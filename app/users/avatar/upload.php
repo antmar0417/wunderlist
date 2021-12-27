@@ -19,6 +19,13 @@ if (isset($_FILES['avatar'], $_POST['id'])) {
     $statement->bindParam(':id', $id, PDO::PARAM_INT);
     $statement->bindParam(':image', $avatarName, PDO::PARAM_STR);
     $statement->execute();
+    // Updating session variables without re-login
+    if (($query)) {
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+        $_SESSION['user'] = $user;
+        $_SESSION['user']['image'] = $avatarName;
+        $_SESSION['user']['id'] = $_POST['id'];
+    }
 }
 
 redirect('/profile.php');
