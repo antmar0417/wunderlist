@@ -3,10 +3,14 @@
 declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
+// $errors = [];
+
 
 // Check if both email and password exists in the POST request.
 if (isset($_POST['email'], $_POST['password'])) {
     $email = trim($_POST['email']);
+    // test
+    // $password = trim($_POST['password']);
 
     // Prepare, bind email parameter and execute the database query.
     $statement = $database->prepare('SELECT * FROM users WHERE email = :email');
@@ -21,6 +25,14 @@ if (isset($_POST['email'], $_POST['password'])) {
     if (!$user) {
         redirect('/login.php');
     }
+    // Check if the email adress is valid
+    // if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    //     $errors[] = 'The email address is not a valid email address!';
+    // }
+
+    // if ($email !== $user['email'] || $password !== $user['password']) {
+    //     $errors[] = 'Whoops... The provided credentials does not match our records!';
+    // }
 
     // If we found the user in the database, compare the given password from the
     // request with the one in the database using the password_verify function.
