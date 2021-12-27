@@ -3,36 +3,45 @@
 
 <article>
     <?php if (isset($_SESSION['user'])) : ?>
-        <h1>My Profile</h1>
-        <p>Customize your avatar.</p>
-        <?php if (isset($_SESSION['user'])) : ?>
-            <img src="<?= checkIfAvatarExist(); ?>" alt="Avatar Photo" height="100px">
-        <?php endif; ?>
-        <form action="/app/users/avatar/upload.php" method="post" enctype="multipart/form-data">
-            <div>
-                <input type="hidden" name="id" value="<?= $_SESSION['user']['id'] ?>">
+        <div class="row mt-5 justify-content-md-center">
+            <div class="col-md-6 ml-center">
+                <h1>My Profile</h1>
+                <p>Customize your avatar.</p>
+                <?php if (isset($_SESSION['user'])) : ?>
+                    <img src="<?= checkIfAvatarExist(); ?>" alt="Avatar Photo" height="100px">
+                <?php endif; ?>
+                <form action="/app/users/avatar/upload.php" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <input type="hidden" name="id" value="<?= $_SESSION['user']['id'] ?>">
 
-                <label for="avatar">Please choose an image</label>
-                <input type="file" name="avatar" id="avatar" accept=".png, .jpg, jpeg" required>
+                        <label for="avatar">Change your avatar</label>
+                        <input type="file" name="avatar" id="avatar" accept=".png, .jpg, jpeg" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </form>
+
+                <h1>Change your email address</h1>
+                <form action="" method="post">
+                    <div class="mb-3">
+                        <label for="email_address">email address:</label>
+                        <input type="email" name="email_address" id="email_address">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Change email</button>
+                </form>
+
+                <h1>Change your password</h1>
+                <form action="" method="post">
+                    <div class="mb-3">
+                        <label for="password">type a new password:</label>
+                        <input name="password" id="password" type="password">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Change password</button>
+                </form>
             </div>
-
-            <button type="submit">Upload</button>
-        </form>
-
-        <div>Change your email address</div>
-        <form action="" method="post">
-            <label for="email_address">email address:</label>
-            <input type="email" name="email_address" id="email_address">
-            <button type="submit">Change email address</button>
-        </form>
-
-        <div>Change your password</div>
-        <form action="" method="post">
-            <label for="password">type a new password:</label>
-            <input name="password" id="password" type="password">
-
-            <button type="submit">Change password</button>
-        </form>
+        </div>
     <?php else : ?>
         <div class="row mt-5 justify-content-md-center">
             <div class="col-md-6 ml-center">
