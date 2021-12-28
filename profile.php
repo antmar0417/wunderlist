@@ -37,10 +37,12 @@
                 </form>
 
                 <h3>Change your password</h3>
-                <form action="" method="post">
+                <form action="/app/users/password/upload.php" method="post">
                     <div class="mb-3">
-                        <label for="password">type a new password:</label>
-                        <input name="password" id="password" type="password">
+                        <input type="hidden" name="id" value="<?= $_SESSION['user']['id'] ?>" id="id">
+
+                        <label for="password" class="form-label">type a new password:</label>
+                        <input class="form-control" name="password" id="password" type="password" required>
 
                         <button type="submit" class="btn btn-primary offset-2">Change</button>
                     </div>
