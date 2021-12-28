@@ -18,7 +18,7 @@ if (isset($_POST['email'], $_POST['id'])) {
 
     $statement = $database->prepare($query);
     $statement->bindParam(':id', $id, PDO::PARAM_INT);
-    $statement->bindParam(':email', $avatarName, PDO::PARAM_STR);
+    $statement->bindParam(':email', $email, PDO::PARAM_STR);
     $statement->execute();
 }
 
