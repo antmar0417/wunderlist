@@ -25,14 +25,15 @@
                 </form>
 
                 <h3>Change your email address</h3>
-                <form action="" method="post">
+                <form action="/app/users/email/upload.php" method="post">
                     <div class="mb-5">
-                        <label for="email_address">type a new email address:</label>
-                        <input type="email" name="email_address" id="email_address">
+                        <input type="hidden" name="id" value="<?= $_SESSION['user']['id'] ?>" id="id">
+
+                        <label for="email" class="form-label">type a new email address:</label>
+                        <input class="form-control" type="email" name="email" id="email" placeholder="<?= $_SESSION['user']['email'] ?>" required>
 
                         <button type="submit" class="btn btn-primary offset-2">Change</button>
                     </div>
-
                 </form>
 
                 <h3>Change your password</h3>
