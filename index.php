@@ -4,9 +4,11 @@
 <div class="row mt-4 justify-content-md-center">
     <div class="col-md-3 ml-center">
         <h1><?php echo $config['title']; ?></h1>
-        <p>This is the home page.</p>
-        <?php if (isset($_SESSION['user'])) : ?>
+        <?php if (isLoggedIn()) : ?>
+            <p>Welcome, <?php echo $_SESSION['user']['name']; ?>!</p>
             <img src="<?= checkIfAvatarExist(); ?>" alt="Avatar Photo" height="100px">
+        <?php else : ?>
+            <p>Login or Sign in to create tasks</p>
         <?php endif; ?>
     </div>
 </div>

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 require __DIR__ . '/../../autoload.php';
 
-$avatarName = '';
-
 if (isset($_FILES['avatar'], $_POST['id'])) {
     $avatar = $_FILES['avatar'];
 
@@ -26,12 +24,14 @@ if (isset($_FILES['avatar'], $_POST['id'])) {
 
     // Updating session variables without re-login
     $email = $_SESSION['user']['email'];
+    $name = $_SESSION['user']['name'];
     if (($query)) {
         $user = $statement->fetch(PDO::FETCH_ASSOC);
         $_SESSION['user'] = $user;
         $_SESSION['user']['email'] = $email;
         $_SESSION['user']['image'] = $avatarName;
         $_SESSION['user']['id'] = $_POST['id'];
+        $_SESSION['user']['name'] = $name;
     }
 }
 

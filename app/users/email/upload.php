@@ -23,12 +23,14 @@ if (isset($_POST['email'], $_POST['id'])) {
 
     // Updating session variables without re-login
     $avatarName = $_SESSION['user']['image'];
+    $name = $_SESSION['user']['name'];
     if (($query)) {
         $user = $statement->fetch(PDO::FETCH_ASSOC);
         $_SESSION['user'] = $user;
         $_SESSION['user']['image'] = $avatarName;
         $_SESSION['user']['email'] = $email;
         $_SESSION['user']['id'] = $_POST['id'];
+        $_SESSION['user']['name'] = $name;
     }
 }
 

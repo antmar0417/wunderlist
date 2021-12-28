@@ -10,7 +10,6 @@ function redirect(string $path)
 
 function checkIfAvatarExist()
 {
-    // if (isset($_SESSION['user'])) {
     if (file_exists(__DIR__ . '/../uploads' . '/' . $_SESSION['user']['image'])) {
         $imagePath = "/uploads" . "/" .  $_SESSION['user']['image'];
         return $imagePath;
@@ -18,5 +17,14 @@ function checkIfAvatarExist()
         $imagePath = '/uploads/unknown-avatar.jpeg';
         return $imagePath;
     }
-    // }
+}
+
+function isLoggedIn(): bool
+{
+    if (isset($_SESSION['user'])) {
+        $user = $_SESSION['user'];
+        return true;
+    } else {
+        return false;
+    }
 }

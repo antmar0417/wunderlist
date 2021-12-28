@@ -2,7 +2,7 @@
 <?php require __DIR__ . '/views/header.php'; ?>
 
 <article>
-    <?php if (isset($_SESSION['user'])) : ?>
+    <?php if (isLoggedIn()) : ?>
         <div class="row mt-1 justify-content-md-center">
             <div class="col-md-8 ml-center offset-5 mb-5">
                 <h1>My Profile</h1>
