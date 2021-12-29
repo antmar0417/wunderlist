@@ -7,8 +7,7 @@ require __DIR__ . '/../../autoload.php';
 
 // Check if both password and id exists in the POST request.
 if (isset($_POST['password'], $_POST['id'])) {
-    // $password = trim($_POST['password']);
-    $password = $_POST['password'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $id = trim($_POST['id']);
 
     $query = "UPDATE users

@@ -8,8 +8,7 @@ require __DIR__ . '/../autoload.php';
 if (isset($_POST['email'], $_POST['password'], $_POST['name'])) {
     $name = trim(filter_var($_POST['name'], FILTER_SANITIZE_STRING));
     $email = trim(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
-    // $password = trim($_POST['password']);
-    $password = $_POST['password'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
 
     $statement = $database->prepare('INSERT INTO users (name, email, password) VALUES (:name, :email, :password)');
