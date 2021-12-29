@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
 
+$_SESSION['message'] = '';
+
 // Check if both email and password exists in the POST request.
 if (isset($_POST['email'], $_POST['password'])) {
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
@@ -21,7 +23,6 @@ if (isset($_POST['email'], $_POST['password'])) {
     if ($email === $user['email'] && password_verify($_POST['password'], $user['password'])) {
         // If the password was valid we know that the user exists and provided
         // the correct password. We can now save the user in our session.
-        // Remember to not save the password in the session!
         unset($user['password']);
 
         $_SESSION['user'] = [
@@ -31,7 +32,9 @@ if (isset($_POST['email'], $_POST['password'])) {
             'image' => $user['image'],
         ];
         redirect('/index.php');
+        $_SESSION['message'] = '';
     } else {
+        $_SESSION['message'] = 'Obs something went wrong';
         redirect('/login.php');
     }
 }
