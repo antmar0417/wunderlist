@@ -30,7 +30,6 @@ if (isset($_POST['email'], $_POST['password'])) {
             'image' => $user['image'],
         ];
         redirect('/index.php');
-        $_SESSION['message'] = '';
     } else {
         redirect('/login.php');
     }
