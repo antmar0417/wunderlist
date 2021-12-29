@@ -32,7 +32,6 @@ if (isset($_POST['email'], $_POST['password'])) {
         redirect('/index.php');
         $_SESSION['message'] = '';
     } else {
-        $_SESSION['message'] = 'Obs something went wrong';
         redirect('/login.php');
     }
 }
