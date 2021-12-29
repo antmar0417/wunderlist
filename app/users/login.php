@@ -28,7 +28,7 @@ if (isset($_POST['email'], $_POST['password'])) {
             'id' => $user['id'],
             'name' => $user['name'],
             'email' => $user['email'],
-            'image' => $user['image'],
+            'image' => $user['image'] ?? './../../uploads/unknown-avatar.jpeg',
         ];
         redirect('/index.php');
     } else {
