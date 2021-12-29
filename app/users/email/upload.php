@@ -7,7 +7,8 @@ require __DIR__ . '/../../autoload.php';
 
 // Check if both email and id exists in the POST request.
 if (isset($_POST['email'], $_POST['id'])) {
-    $email = trim($_POST['email']);
+    // $email = trim($_POST['email']);
+    $email = trim(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
     $id = trim($_POST['id']);
     // die(var_dump($email));
     // die(var_dump($id));

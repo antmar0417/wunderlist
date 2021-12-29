@@ -7,6 +7,7 @@ require __DIR__ . '/../autoload.php';
 // Check if both email and password exists in the POST request.
 if (isset($_POST['email'], $_POST['password'])) {
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    $password = $_POST['password'];
 
     // Prepare, bind email parameter and execute the database query.
     $statement = $database->prepare('SELECT * FROM users WHERE email = :email');
