@@ -4,9 +4,6 @@
 <div class="row mt-5 justify-content-md-center">
     <div class="col-md-6 ml-center">
         <h1>Login</h1>
-        <?php if ($_SESSION['message'] !== '') : ?>
-            <p><?php echo $_SESSION['message']; ?></p>
-        <?php endif; ?>
 
         <form action="app/users/login.php" method="post">
             <div class="mb-3">
