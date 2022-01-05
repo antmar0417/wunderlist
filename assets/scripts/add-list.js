@@ -1,3 +1,5 @@
+console.log('hello');
+
 document.getElementById('button').addEventListener('click', () => {
   document.querySelector('.pop-up-add-list').style.display = 'flex';
 });
