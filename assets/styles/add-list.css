@@ -1,0 +1,74 @@
+.pop-up-contents img {
+  width: 50px;
+  border-radius: 30%;
+}
+
+.change-list {
+  height: 160px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aquamarine;
+}
+
+.button {
+  background-color: #1686d9;
+  border: 2px solid rgb(45, 68, 194);
+  border-radius: 15px;
+  text-decoration: none;
+  padding: 10px 28px;
+  color: white;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.button:hover {
+  background-color: white;
+  color: #1686d9;
+  border: 2px solid #1686d9;
+}
+
+.pop-up-add-list {
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.pop-up-contents {
+  height: 220px;
+  width: 500px;
+  background-color: white;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  border-radius: 4px;
+}
+
+input {
+  margin: 15px auto;
+  display: block;
+  width: 50%;
+  padding: 8px;
+  border: 1px solid gray;
+}
+
+.close-add-list {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 42px;
+  color: #333;
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+
+.close-add-list:hover {
+  color: rgb(240, 42, 42);
+}
