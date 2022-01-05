@@ -29,7 +29,7 @@
         </details>
     </div>
     <?php if (isset($_GET['list'])) : ?>
-        <p class="text-center">Your list, <?php echo $_GET['list']; ?></p>
+        <p class="text-center">Current list, <?php echo $_GET['list']; ?></p>
         <?php require __DIR__ . '/lists.php'; ?>
     <?php endif; ?>
 <?php else : ?>
