@@ -40,20 +40,25 @@
                 <div class="close-add-list">+</div>
                 <img src="<?= checkIfAvatarExist(); ?>" alt="avatar photo" />
 
-                <form action="">
+                <form action="/app/users/lists/add-list.php" method="post">
                     <input type="hidden" name="id" value="<?= $_SESSION['user']['id'] ?>" id="id" />
 
                     <label for="list-title" class="form-label"></label>
                     <input class="form-control" type="text" name="list-title" id="list-title" placeholder="List Title" required />
-                    <a href="index.php" class="button">Submit</a>
+                    <!-- <a href="index.php" class="button">Submit</a> -->
+                    <button type="submit" class="button">Upload</button>
                 </form>
             </div>
         </div>
     </div>
+    <?php if (isset($_POST['list-title'], $_POST['id'])) : ?>
+        <div><?php echo $_POST['list-title']; ?></div>
+    <?php endif; ?>
+
     <!-- END -->
     <?php if (isset($_GET['list'])) : ?>
         <p class="text-center">Current list, <?php echo $_GET['list']; ?></p>
-        <?php require __DIR__ . '/lists.php'; ?>
+        <?php require __DIR__ . '/app/users/lists/get-all-lists.php'; ?>
     <?php endif; ?>
 <?php else : ?>
     <div class="row mt-4 justify-content-md-center">
