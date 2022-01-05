@@ -28,6 +28,29 @@
             </ul>
         </details>
     </div>
+    <!-- Test to add List -->
+    <div class="change-list">
+        <div>
+            <h2>Click on the button to create list</h2>
+            <a href="#" id="button" class="button">Add List</a>
+        </div>
+
+        <div class="pop-up-add-list">
+            <div class="pop-up-contents">
+                <div class="close-add-list">+</div>
+                <img src="<?= checkIfAvatarExist(); ?>" alt="avatar photo" />
+
+                <form action="">
+                    <input type="hidden" name="id" value="<?= $_SESSION['user']['id'] ?>" id="id" />
+
+                    <label for="list-title" class="form-label"></label>
+                    <input class="form-control" type="text" name="list-title" id="list-title" placeholder="List Title" required />
+                    <a href="index.php" class="button">Submit</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- END -->
     <?php if (isset($_GET['list'])) : ?>
         <p class="text-center">Current list, <?php echo $_GET['list']; ?></p>
         <?php require __DIR__ . '/lists.php'; ?>
