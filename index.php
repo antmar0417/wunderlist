@@ -32,7 +32,7 @@
     <div class="change-list">
         <div>
             <h2>Click on the button to create list</h2>
-            <a href="#" id="button" class="button">Add List</a>
+            <a href="#" id="open-button" class="button">Add List</a>
         </div>
 
         <div class="pop-up-add-list">
