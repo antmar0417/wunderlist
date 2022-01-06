@@ -50,12 +50,12 @@
             <a href="index.php?list=all" id="show-lists-button" class="show-lists-button">Show Lists</a>
         </div>
     </div>
+    <?php if (isset($_GET['list'])) : ?>
+        <?php require __DIR__ . '/app/users/lists/get-all-lists.php'; ?>
+        <div class="show-lists">
+            <div class="lists-contents">
+                <div class="close-show-list">+</div>
 
-    <div class="show-lists">
-        <div class="lists-contents">
-            <div class="close-show-list">+</div>
-            <?php if (isset($_GET['list'])) : ?>
-                <?php require __DIR__ . '/app/users/lists/get-all-lists.php'; ?>
                 <table class="table">
                     <thead>
                         <tr>
@@ -81,10 +81,11 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-            <?php endif; ?>
 
+            </div>
         </div>
-    </div>
+    <?php endif; ?>
+
     <!-- END -->
 <?php else : ?>
     <div class="row mt-4 justify-content-md-center">
