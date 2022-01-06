@@ -81,12 +81,11 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-
             </div>
         </div>
     <?php endif; ?>
-
     <!-- END -->
+
 <?php else : ?>
     <div class="row mt-4 justify-content-md-center">
         <div class="col-md-3 ml-center">
