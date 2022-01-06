@@ -16,23 +16,13 @@
     <div class="d-flex justify-content-center">
         <img src="<?= checkIfAvatarExist(); ?>" alt="avatar photo" height="100px">
     </div>
-    <div class="d-flex justify-content-center">
-        <details class="navbar-brand">
-            <summary>
-                Lists
-            </summary>
-            <ul class="list-group list-group-flush">
-                <a href="index.php?list=all" class="list-group-item list-group-item-action">All</a>
-                <a href="#" class="list-group-item list-group-item-action">Ongoing</a>
-                <a href="#" class="list-group-item list-group-item-action">Done</a>
-            </ul>
-        </details>
-    </div>
-    <!-- Test to add List -->
+
+    <!-- Adding New List -->
     <div class="change-list">
         <div>
             <h2>Click on the button to create list</h2>
-            <a href="#" id="open-button" class="button">Add List</a>
+            <!-- <a href="#" id="open-button" class="button">Add List</a> -->
+            <button id="open-button" class="button">Add List</button>
         </div>
 
         <div class="pop-up-add-list">
@@ -51,15 +41,51 @@
             </div>
         </div>
     </div>
-    <?php if (isset($_POST['list-title'], $_POST['id'])) : ?>
-        <div><?php echo $_POST['list-title']; ?></div>
-    <?php endif; ?>
-
     <!-- END -->
-    <?php if (isset($_GET['list'])) : ?>
-        <p class="text-center">Current list, <?php echo $_GET['list']; ?></p>
-        <?php require __DIR__ . '/app/users/lists/get-all-lists.php'; ?>
-    <?php endif; ?>
+
+    <!-- Showing The Lists -->
+    <div class="change-list-name">
+        <div>
+            <h2>Click on the button to see yor lists</h2>
+            <a href="index.php?list=all" id="show-lists-button" class="show-lists-button">Show Lists</a>
+        </div>
+    </div>
+
+    <div class="show-lists">
+        <div class="lists-contents">
+            <div class="close-show-list">+</div>
+            <?php if (isset($_GET['list'])) : ?>
+                <?php require __DIR__ . '/app/users/lists/get-all-lists.php'; ?>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Lists
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($lists as $list) : ?>
+                            <tr>
+                                <td>
+                                    <?php echo $list['title']; ?>
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary" id="edit-button">
+                                        Edit
+                                    </button>
+                                    <a class="btn btn-sm btn-danger offset-1" href="/app/users/lists/delete-list.php?list-title=<?php echo $list['title']; ?>">Delete</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php endif; ?>
+
+        </div>
+    </div>
+    <!-- END -->
 <?php else : ?>
     <div class="row mt-4 justify-content-md-center">
         <div class="col-md-3 ml-center">
