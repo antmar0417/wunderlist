@@ -10,6 +10,11 @@ if (isset($_GET['list-title'])) {
 
     $statement = $database->query("DELETE FROM lists
     WHERE user_id = $user_id AND title = '$title'");
+    $statement->execute();
+
+    $statement = $database->query("DELETE FROM tasks
+    WHERE user_id = $user_id AND list_title = '$title'");
+    $statement->execute();
 }
 
 header('Location: /');
