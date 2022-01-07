@@ -41,9 +41,9 @@
             </div>
         </div>
     </div>
-    <!-- END -->
 
     <!-- Showing The Lists -->
+
     <div class="change-list-name">
         <div>
             <h2>Click on the button to see yor lists</h2>
@@ -62,7 +62,9 @@
                             <th>
                                 Lists
                             </th>
-                            <th></th>
+                            <th>
+                                <a href="index.php?show-all-tasks=all" id="">Show All Tasks</a>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,6 +86,62 @@
             </div>
         </div>
     <?php endif; ?>
+
+    <!-- Showing All Tasks -->
+
+    <?php if (isset($_GET['show-all-tasks'])) : ?>
+        <?php require __DIR__ . '/app/users/tasks/get-all-tasks.php'; ?>
+
+        <div class="show-lists">
+            <div class="lists-contents">
+                <div class="close-show-list">+</div>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Deadline</th>
+                            <th>Status</th>
+                            <th>Title</th>
+                            <th>Content</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($tasks as $task) : ?>
+                            <!-- First Element -->
+                            <tr>
+                                <td>24-05-22</td>
+
+                                <td>Completed</td>
+                                <td>To do number 1</td>
+
+                                <td>
+                                    <?php echo $task['content']; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary" id="edit-button">
+                                        Edit
+                                    </button>
+                                    <a class="btn btn-sm btn-danger" href="">Delete</a>
+                                </td>
+                            </tr>
+                            <!-- Second Element -->
+                        <?php endforeach; ?>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    <?php endif; ?>
+
+    <!-- Edit A List -->
+
     <?php if (isset($_GET['current-list-title'])) : ?>
         <div class="new-list-container">
             <div class="contents">
@@ -101,7 +159,6 @@
             </div>
         </div>
     <?php endif; ?>
-    <!-- END -->
 
 <?php else : ?>
     <div class="row mt-4 justify-content-md-center">
