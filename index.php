@@ -72,15 +72,32 @@
                                     <?php echo $list['title']; ?>
                                 </td>
                                 <td>
-                                    <button class="btn btn-sm btn-primary" id="edit-button">
+                                    <a href="index.php?current-list-title=<?php echo $list['title']; ?>" class="btn btn-sm btn-primary" id="edit-button">
                                         Edit
-                                    </button>
-                                    <a class="btn btn-sm btn-danger offset-1" href="/app/users/lists/delete-list.php?list-title=<?php echo $list['title']; ?>">Delete</a>
+                                    </a>
+                                    <a href="/app/users/lists/delete-list.php?list-title=<?php echo $list['title']; ?>" class="btn btn-sm btn-danger offset-1">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    <?php endif; ?>
+    <?php if (isset($_GET['current-list-title'])) : ?>
+        <div class="new-list-container">
+            <div class="contents">
+                <div class="close-btn">+</div>
+                <p class="text-center">Current name: <?php echo $_GET['current-list-title']; ?></p>
+
+                <form action="/app/users/lists/edit-list-name.php" method="post">
+                    <input type="hidden" name="id" value="<? echo $_SESSION['user']['id'] ?>" id="id" />
+                    <input type="hidden" name="current-list-title" value="<? echo $_GET['current-list-title']; ?>" id="current-list-title" />
+
+                    <label for="new-list-title" class="form-label"></label>
+                    <input class="form-control" type="text" name="new-list-title" id="new-list-title" placeholder="New List Name" required />
+                    <button type="submit" class="button">Upload</button>
+                </form>
             </div>
         </div>
     <?php endif; ?>
