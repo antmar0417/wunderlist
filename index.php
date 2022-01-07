@@ -31,7 +31,7 @@
                 <img src="<?= checkIfAvatarExist(); ?>" alt="avatar photo" />
 
                 <form action="/app/users/lists/add-list.php" method="post">
-                    <input type="hidden" name="id" value="<?= $_SESSION['user']['id'] ?>" id="id" />
+                    <input type="hidden" name="id" value="<?php echo $_SESSION['user']['id'] ?>" id="id" />
 
                     <label for="list-title" class="form-label"></label>
                     <input class="form-control" type="text" name="list-title" id="list-title" placeholder="List Title" required />
@@ -91,8 +91,8 @@
                 <p class="text-center">Current name: <?php echo $_GET['current-list-title']; ?></p>
 
                 <form action="/app/users/lists/edit-list-name.php" method="post">
-                    <input type="hidden" name="id" value="<? echo $_SESSION['user']['id'] ?>" id="id" />
-                    <input type="hidden" name="current-list-title" value="<? echo $_GET['current-list-title']; ?>" id="current-list-title" />
+                    <input type="hidden" name="id" value="<?php echo $_SESSION['user']['id'] ?>" id="id" />
+                    <input type="hidden" name="current-list-title" value="<?php echo $_GET['current-list-title']; ?>" id="current-list-title" />
 
                     <label for="new-list-title" class="form-label"></label>
                     <input class="form-control" type="text" name="new-list-title" id="new-list-title" placeholder="New List Name" required />
