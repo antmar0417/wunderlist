@@ -31,7 +31,7 @@
                     <button class="btn btn-sm btn-primary" id="edit-button">
                         Edit
                     </button>
-                    <a class="btn btn-sm btn-danger" href="">Delete</a>
+                    <a href="/app/users/tasks/delete-task.php?id=<?php echo $task['id']; ?>" class="btn btn-sm btn-danger offset-1">Delete</a>
                 </td>
             </tr>
         <?php endforeach; ?>
