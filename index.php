@@ -52,39 +52,7 @@
     </div>
     <?php if (isset($_GET['list'])) : ?>
         <?php require __DIR__ . '/app/users/lists/get-all-lists.php'; ?>
-        <div class="show-lists">
-            <div class="lists-contents">
-                <div class="close-show-list">+</div>
-
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>
-                                Lists
-                            </th>
-                            <th>
-                                <a href="index.php?show-all-tasks=all" id="">Show All Tasks</a>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($lists as $list) : ?>
-                            <tr>
-                                <td>
-                                    <?php echo $list['title']; ?>
-                                </td>
-                                <td>
-                                    <a href="index.php?current-list-title=<?php echo $list['title']; ?>" class="btn btn-sm btn-primary" id="edit-button">
-                                        Edit
-                                    </a>
-                                    <a href="/app/users/lists/delete-list.php?list-title=<?php echo $list['title']; ?>" class="btn btn-sm btn-danger offset-1">Delete</a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <?php require __DIR__ . '/show-lists.php'; ?>
     <?php endif; ?>
 
     <!-- Showing All Tasks -->
@@ -95,49 +63,40 @@
         <div class="show-lists">
             <div class="lists-contents">
                 <div class="close-show-list">+</div>
-
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Deadline</th>
-                            <th>Status</th>
-                            <th>Title</th>
-                            <th>Content</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($tasks as $task) : ?>
-                            <!-- First Element -->
-                            <tr>
-                                <td>24-05-22</td>
-
-                                <td>Completed</td>
-                                <td>To do number 1</td>
-
-                                <td>
-                                    <?php echo $task['content']; ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary" id="edit-button">
-                                        Edit
-                                    </button>
-                                    <a class="btn btn-sm btn-danger" href="">Delete</a>
-                                </td>
-                            </tr>
-                            <!-- Second Element -->
-                        <?php endforeach; ?>
-
-                    </tbody>
-                </table>
+                <p>Showing <?php echo $_GET['show-all-tasks'] ?> tasks</p>
+                <!-- Tasks Table -->
+                <?php require __DIR__ . '/tasks-table.php'; ?>
+                <!-- END -->
             </div>
         </div>
 
+    <?php endif; ?>
 
+    <!-- Showing Tasks Within A List-->
+    <?php if (isset($_GET['show-tasks-within-list'])) : ?>
+        <?php require __DIR__ . '/app/users/tasks/get-tasks-within-list.php'; ?>
+
+        <div class="show-lists">
+            <div class="lists-contents">
+                <div class="close-show-list">+</div>
+                <p>Current list: <?php echo $_GET['show-tasks-within-list']; ?> </p>
+                <!-- Tasks Table -->
+                <?php require __DIR__ . '/tasks-table.php'; ?>
+                <!-- END -->
+                <a href="index.php?current-list=<?php echo $_GET['show-tasks-within-list']; ?>" id="">Create New Task</a>
+
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <!-- Create New Task -->
+    <?php if (isset($_GET['current-list'])) : ?>
+        <div class="new-list-container">
+            <div class="contents">
+                <div class="close-btn">+</div>
+                <p><?php echo $_GET['current-list']; ?></p>
+            </div>
+        </div>
     <?php endif; ?>
 
     <!-- Edit A List -->
