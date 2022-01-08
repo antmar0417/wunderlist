@@ -18,6 +18,7 @@
     </div>
 
     <!-- Adding New List -->
+
     <div class="change-list">
         <div>
             <h2>Click on the button to create list</h2>
@@ -89,12 +90,30 @@
         </div>
     <?php endif; ?>
 
-    <!-- Create New Task -->
+    <!-- Creating New Task -->
+
     <?php if (isset($_GET['current-list'])) : ?>
         <div class="new-list-container">
             <div class="contents">
                 <div class="close-btn">+</div>
-                <p><?php echo $_GET['current-list']; ?></p>
+                <p>Current List: <?php echo $_GET['current-list']; ?></p>
+
+                <form action="/app/users/tasks/create-task.php" method="post">
+                    <input type="hidden" name="id" value="<?php echo $_SESSION['user']['id'] ?>" id="id" />
+                    <input type="hidden" name="current-list" value="<?php echo $_GET['current-list']; ?>" id="current-list" />
+
+                    <label for="date" class="form-label"></label>
+                    <input placeholder="Selected date" type="date" name="date" id="date" class="form-control datepicker" />
+
+                    <label for="task-title" class="form-label"></label>
+                    <input class="form-control" type="text" name="task-title" id="task-title" placeholder="Task Title" required />
+
+                    <label for="quote" class="form-label">Quote</label>
+                    <textarea name="quote" id="quote" class="form-control" required></textarea>
+                    <br />
+
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </form>
             </div>
         </div>
     <?php endif; ?>
