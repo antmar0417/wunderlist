@@ -73,7 +73,25 @@
 
     <?php endif; ?>
 
+    <!-- Showing All Tasks Which Should Be Completed Today -->
+    <?php if (isset($_GET['tasks-today'])) : ?>
+        <?php require __DIR__ . '/app/users/tasks/get-all-task-today.php'; ?>
+
+        <div class="show-lists">
+            <div class="lists-contents">
+                <div class="close-show-list">+</div>
+                <?php
+                echo 'Today: ' . date('Y-m-d');
+                ?>
+                <!-- Tasks Table -->
+                <?php require __DIR__ . '/tasks-table.php'; ?>
+                <!-- END -->
+            </div>
+        </div>
+    <?php endif; ?>
+
     <!-- Showing Tasks Within A List-->
+
     <?php if (isset($_GET['show-tasks-within-list'])) : ?>
         <?php require __DIR__ . '/app/users/tasks/get-tasks-within-list.php'; ?>
 
@@ -85,9 +103,9 @@
                 <?php require __DIR__ . '/tasks-table.php'; ?>
                 <!-- END -->
                 <a href="index.php?current-list=<?php echo $_GET['show-tasks-within-list']; ?>" id="">Create New Task</a>
-
             </div>
         </div>
+
     <?php endif; ?>
 
     <!-- Creating New Task -->
@@ -118,7 +136,7 @@
         </div>
     <?php endif; ?>
 
-    <!-- Edit A List -->
+    <!-- Editing A List -->
 
     <?php if (isset($_GET['current-list-title'])) : ?>
         <div class="new-list-container">

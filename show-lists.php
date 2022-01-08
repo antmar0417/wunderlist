@@ -9,7 +9,8 @@
                         Lists
                     </th>
                     <th>
-                        <a href="index.php?show-all-tasks=all" id="">Show All Tasks</a>
+                        <a href="index.php?show-all-tasks=all" id="">All Tasks</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="index.php?tasks-today=today" id="">Today</a>
                     </th>
                 </tr>
             </thead>
