@@ -74,6 +74,7 @@
     <?php endif; ?>
 
     <!-- Showing All Tasks Which Should Be Completed Today -->
+
     <?php if (isset($_GET['tasks-today'])) : ?>
         <?php require __DIR__ . '/app/users/tasks/get-all-task-today.php'; ?>
 
@@ -108,6 +109,67 @@
 
     <?php endif; ?>
 
+    <!-- Editing a task -->
+
+    <?php if (isset($_GET['task-id'])) : ?>
+        <?php require __DIR__ . '/app/users/lists/get-all-list-suggestions.php'; ?>
+
+
+
+        <div class="show-lists">
+            <div class="lists-contents">
+                <div class="close-show-list">+</div>
+                <p>Current task id: <?php echo $_GET['task-id']; ?></p>
+
+                <form action="" method="post">
+                    <input type="hidden" name="id" value="<?php echo $_SESSION['user']['id'] ?>" id="id" />
+                    <input type="hidden" name="current-list" value="" id="current-list" />
+
+                    <label for="date" class="form-label"></label>
+                    <input placeholder="Selected date" type="date" name="date" id="date" class="form-control datepicker" required />
+
+                    <label for="task-title" class="form-label"></label>
+                    <input class="form-control" type="text" name="task-title" id="task-title" placeholder="Task Title" required />
+
+                    <label for="quote" class="form-label">Quote</label>
+                    <textarea name="quote" id="quote" class="form-control" required></textarea>
+                    <br />
+
+
+
+                </form>
+
+                <!-- Moving task to a list -->
+
+                <form action="/app/users/tasks/move-task-to-list.php" method="post">
+                    <input type="hidden" name="id" value="<?php echo $_SESSION['user']['id'] ?>" id="id" />
+                    <input type="hidden" name="task-id" value="<?php echo $_GET['task-id']; ?>" id="task-id" />
+
+                    <div class="input-group mb-3">
+                        <label for="move-task-to-list" class="form-label"></label>
+                        <input name="move-task-to-list" id="move-task-to-list" type="text" class="form-control" list="suggestions" placeholder="Choose a list" required>
+
+                        <button class="btn btn-primary" type="submit" id="button-right">Upload</button>
+
+                        <datalist id="suggestions">
+                            <?php foreach ($lists as $list) : ?>
+                                <option><?php echo $list['title']; ?></option>
+                            <?php endforeach; ?>
+                        </datalist>
+                    </div>
+
+                </form>
+
+
+                <a href="/app/users/tasks/finished-task.php?finished-task-id=<?php echo $_GET['task-id']; ?>" class="btn btn-sm btn-success" id="edit-button">
+                    Completed
+                </a>
+                <a href="/app/users/tasks/unfinished-task.php?unfinished-task-id=<?php echo $_GET['task-id']; ?>" class="btn btn-sm btn-danger offset-1">Unfinished</a>
+            </div>
+        </div>
+    <?php endif; ?>
+
+
     <!-- Creating New Task -->
 
     <?php if (isset($_GET['current-list'])) : ?>
@@ -121,7 +183,7 @@
                     <input type="hidden" name="current-list" value="<?php echo $_GET['current-list']; ?>" id="current-list" />
 
                     <label for="date" class="form-label"></label>
-                    <input placeholder="Selected date" type="date" name="date" id="date" class="form-control datepicker" />
+                    <input placeholder="Selected date" type="date" name="date" id="date" class="form-control datepicker" required />
 
                     <label for="task-title" class="form-label"></label>
                     <input class="form-control" type="text" name="task-title" id="task-title" placeholder="Task Title" required />

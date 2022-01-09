@@ -28,9 +28,11 @@
                 <td></td>
                 <td></td>
                 <td>
-                    <button class="btn btn-sm btn-primary" id="edit-button">
+                    <a href="index.php?task-id=<?php echo $task['id']; ?>" class="btn btn-sm btn-primary offset-1">Edit</a>
+
+                    <!-- <button class="btn btn-sm btn-primary" id="edit-button">
                         Edit
-                    </button>
+                    </button> -->
                     <a href="/app/users/tasks/delete-task.php?id=<?php echo $task['id']; ?>" class="btn btn-sm btn-danger offset-1">Delete</a>
                 </td>
             </tr>

@@ -56,3 +56,9 @@
 .close-show-list:hover {
   color: rgb(240, 42, 42);
 }
+
+#button-right {
+  height: 39px;
+  margin-left: 5px;
+  margin-top: 14px;
+}
