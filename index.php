@@ -121,12 +121,23 @@
                 <div class="close-show-list">+</div>
                 <p>Current task id: <?php echo $_GET['task-id']; ?></p>
 
-                <form action="" method="post">
-                    <input type="hidden" name="id" value="<?php echo $_SESSION['user']['id'] ?>" id="id" />
-                    <input type="hidden" name="current-list" value="" id="current-list" />
+                <!-- Updating The Date -->
 
-                    <label for="date" class="form-label"></label>
-                    <input placeholder="Selected date" type="date" name="date" id="date" class="form-control datepicker" required />
+                <form action="/app/users/tasks/edit-task-date.php" method="post">
+                    <input type="hidden" name="task-id" value="<?php echo $_GET['task-id']; ?>" id="task-id" />
+
+                    <div class="input-group mb-3">
+                        <label for="date" class="form-label"></label>
+                        <input placeholder="Selected date" type="date" name="date" id="date" class="form-control datepicker" required />
+
+                        <button class="btn btn-primary" type="submit" id="button-right">Change</button>
+                    </div>
+                </form>
+
+                <!-- New Title And Quote -->
+
+                <form action="/app/users/tasks/edit-task-content.php" method="post">
+                    <input type="hidden" name="task-id" value="<?php echo $_GET['task-id']; ?>" id="task-id" />
 
                     <label for="task-title" class="form-label"></label>
                     <input class="form-control" type="text" name="task-title" id="task-title" placeholder="Task Title" required />
@@ -135,29 +146,26 @@
                     <textarea name="quote" id="quote" class="form-control" required></textarea>
                     <br />
 
-
-
+                    <button type="submit" class="btn btn-primary">Upload</button>
                 </form>
 
                 <!-- Moving task to a list -->
 
                 <form action="/app/users/tasks/move-task-to-list.php" method="post">
-                    <input type="hidden" name="id" value="<?php echo $_SESSION['user']['id'] ?>" id="id" />
                     <input type="hidden" name="task-id" value="<?php echo $_GET['task-id']; ?>" id="task-id" />
 
                     <div class="input-group mb-3">
                         <label for="move-task-to-list" class="form-label"></label>
-                        <input name="move-task-to-list" id="move-task-to-list" type="text" class="form-control" list="suggestions" placeholder="Choose a list" required>
-
-                        <button class="btn btn-primary" type="submit" id="button-right">Upload</button>
+                        <input name="move-task-to-list" id="move-task-to-list" type="text" class="form-control" list="suggestions" placeholder="Add to a list" required>
 
                         <datalist id="suggestions">
                             <?php foreach ($lists as $list) : ?>
                                 <option><?php echo $list['title']; ?></option>
                             <?php endforeach; ?>
                         </datalist>
-                    </div>
 
+                        <button class="btn btn-primary" type="submit" id="button-right">Change</button>
+                    </div>
                 </form>
 
 
