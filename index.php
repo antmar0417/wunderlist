@@ -119,12 +119,14 @@
             <?php if ($task['id'] === $_GET['task-id']) : ?>
                 <?php $taskTitlePlaceholder = $task['title']; ?>
                 <?php $taskContentPlaceholder = $task['content']; ?>
+                <?php $listTitlePlaceholder = $task['list_title']; ?>
             <?php endif; ?>
         <?php endforeach; ?>
 
         <div class="show-lists">
             <div class="lists-contents">
                 <div class="close-show-list">+</div>
+                <p>Current list: <?php echo $listTitlePlaceholde; ?></p>
 
                 <!-- Updating The Date -->
 
@@ -170,19 +172,15 @@
                         <button class="btn btn-primary" type="submit">Change</button>
                     </div>
                 </form>
-
                 <?php foreach ($tasks as $task) : ?>
-
                     <?php if ($task['checked'] === 'No' && $task['id'] === $_GET['task-id']) : ?>
                         <a href="/app/users/tasks/finished-task.php?finished-task-id=<?php echo $_GET['task-id']; ?>" class="btn btn-sm btn-success" id="edit-button">
                             Completed
                         </a>
                     <?php endif; ?>
-
                     <?php if ($task['checked'] === 'Yes' && $task['id'] === $_GET['task-id']) : ?>
                         <a href="/app/users/tasks/unfinished-task.php?unfinished-task-id=<?php echo $_GET['task-id']; ?>" class="btn btn-sm btn-danger">Unfinished</a>
                     <?php endif; ?>
-
                 <?php endforeach; ?>
             </div>
         </div>
