@@ -126,7 +126,7 @@
         <div class="show-lists">
             <div class="lists-contents">
                 <div class="close-show-list">+</div>
-                <p>Current list: <?php echo $listTitlePlaceholde; ?></p>
+                <p>Current list: <?php echo $listTitlePlaceholder; ?></p>
 
                 <!-- Updating The Date -->
 
@@ -162,12 +162,12 @@
 
                     <div class="input-group mb-3">
                         <label for="move-task-to-list" class="form-label"></label>
-                        <input name="move-task-to-list" id="move-task-to-list" type="text" class="form-control" list="suggestions" placeholder="Add to a list" required>
-                        <datalist id="suggestions">
+                        <select class="form-select" name="move-task-to-list" id="move-task-to-list">
+                            <option selected>Celect a list</option>
                             <?php foreach ($lists as $list) : ?>
                                 <option><?php echo $list['title']; ?></option>
                             <?php endforeach; ?>
-                        </datalist>
+                        </select>
 
                         <button class="btn btn-primary" type="submit">Change</button>
                     </div>
