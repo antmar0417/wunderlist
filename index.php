@@ -115,10 +115,16 @@
         <?php require __DIR__ . '/app/users/lists/get-all-list-suggestions.php'; ?>
         <?php $tasks = getAllTasks($database, $_SESSION['user']['id']); ?>
 
+        <?php foreach ($tasks as $task) : ?>
+            <?php if ($task['id'] === $_GET['task-id']) : ?>
+                <?php $taskTitlePlaceholder = $task['title']; ?>
+                <?php $taskContentPlaceholder = $task['content']; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+
         <div class="show-lists">
             <div class="lists-contents">
                 <div class="close-show-list">+</div>
-                <p>Current task id: <?php echo $_GET['task-id']; ?></p>
 
                 <!-- Updating The Date -->
 
@@ -139,10 +145,10 @@
                     <input type="hidden" name="task-id" value="<?php echo $_GET['task-id']; ?>" id="task-id" />
 
                     <label for="task-title" class="form-label"></label>
-                    <input class="form-control" type="text" name="task-title" id="task-title" placeholder="Task Title" required />
+                    <input class="form-control" type="text" name="task-title" id="task-title" placeholder="<?php echo $taskTitlePlaceholder; ?>" required />
 
                     <label for="quote" class="form-label"></label>
-                    <textarea name="quote" id="quote" class="form-control mb-3" placeholder="Type a text here" required></textarea>
+                    <textarea name="quote" id="quote" class="form-control mb-3" placeholder="<?php echo $taskContentPlaceholder; ?>" required></textarea>
 
                     <button type="submit" class="btn btn-sm btn-primary mb-4">Change</button>
                 </form>
@@ -155,7 +161,6 @@
                     <div class="input-group mb-3">
                         <label for="move-task-to-list" class="form-label"></label>
                         <input name="move-task-to-list" id="move-task-to-list" type="text" class="form-control" list="suggestions" placeholder="Add to a list" required>
-
                         <datalist id="suggestions">
                             <?php foreach ($lists as $list) : ?>
                                 <option><?php echo $list['title']; ?></option>
