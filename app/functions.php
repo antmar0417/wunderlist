@@ -28,3 +28,13 @@ function isLoggedIn(): bool
         return false;
     }
 }
+
+function getAllTasks(PDO $database, int $id): array
+{
+    $statement = $database->query("SELECT *
+        FROM tasks
+        WHERE user_id = $id");
+
+    $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $tasks;
+}

@@ -113,8 +113,7 @@
 
     <?php if (isset($_GET['task-id'])) : ?>
         <?php require __DIR__ . '/app/users/lists/get-all-list-suggestions.php'; ?>
-
-
+        <?php $tasks = getAllTasks($database, $_SESSION['user']['id']); ?>
 
         <div class="show-lists">
             <div class="lists-contents">
@@ -130,11 +129,11 @@
                         <label for="date" class="form-label"></label>
                         <input placeholder="Selected date" type="date" name="date" id="date" class="form-control datepicker" required />
 
-                        <button class="btn btn-primary" type="submit" id="button-right">Change</button>
+                        <button class="btn btn-primary" type="submit">Change</button>
                     </div>
                 </form>
 
-                <!-- New Title And Quote -->
+                <!-- New Title And Content -->
 
                 <form action="/app/users/tasks/edit-task-content.php" method="post">
                     <input type="hidden" name="task-id" value="<?php echo $_GET['task-id']; ?>" id="task-id" />
@@ -142,11 +141,10 @@
                     <label for="task-title" class="form-label"></label>
                     <input class="form-control" type="text" name="task-title" id="task-title" placeholder="Task Title" required />
 
-                    <label for="quote" class="form-label">Quote</label>
-                    <textarea name="quote" id="quote" class="form-control" required></textarea>
-                    <br />
+                    <label for="quote" class="form-label"></label>
+                    <textarea name="quote" id="quote" class="form-control mb-3" placeholder="Type a text here" required></textarea>
 
-                    <button type="submit" class="btn btn-primary">Upload</button>
+                    <button type="submit" class="btn btn-sm btn-primary mb-4">Change</button>
                 </form>
 
                 <!-- Moving task to a list -->
@@ -164,15 +162,23 @@
                             <?php endforeach; ?>
                         </datalist>
 
-                        <button class="btn btn-primary" type="submit" id="button-right">Change</button>
+                        <button class="btn btn-primary" type="submit">Change</button>
                     </div>
                 </form>
 
+                <?php foreach ($tasks as $task) : ?>
 
-                <a href="/app/users/tasks/finished-task.php?finished-task-id=<?php echo $_GET['task-id']; ?>" class="btn btn-sm btn-success" id="edit-button">
-                    Completed
-                </a>
-                <a href="/app/users/tasks/unfinished-task.php?unfinished-task-id=<?php echo $_GET['task-id']; ?>" class="btn btn-sm btn-danger offset-1">Unfinished</a>
+                    <?php if ($task['checked'] === 'No' && $task['id'] === $_GET['task-id']) : ?>
+                        <a href="/app/users/tasks/finished-task.php?finished-task-id=<?php echo $_GET['task-id']; ?>" class="btn btn-sm btn-success" id="edit-button">
+                            Completed
+                        </a>
+                    <?php endif; ?>
+
+                    <?php if ($task['checked'] === 'Yes' && $task['id'] === $_GET['task-id']) : ?>
+                        <a href="/app/users/tasks/unfinished-task.php?unfinished-task-id=<?php echo $_GET['task-id']; ?>" class="btn btn-sm btn-danger">Unfinished</a>
+                    <?php endif; ?>
+
+                <?php endforeach; ?>
             </div>
         </div>
     <?php endif; ?>
