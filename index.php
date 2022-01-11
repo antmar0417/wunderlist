@@ -1,7 +1,7 @@
 <?php require __DIR__ . '/app/autoload.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
 
-<div class="main-section">
+<div class="main-section min-vh-100">
     <?php if (isLoggedIn()) : ?>
         <div class="row mt-4 justify-content-md-center">
             <div class="col-md-3 ml-center">
@@ -9,8 +9,9 @@
             </div>
         </div>
         <div class="d-flex justify-content-center">
-            <a href="index.php?list=all" id="show-lists-button" class="btn btn-primary">Show Lists</a>
+            <a href="index.php?list=all" class="btn btn-primary mb-3">Show Lists</a>
         </div>
+        <div class="welcome"></div>
 
         <!-- Showing All Lists -->
 
@@ -40,6 +41,26 @@
                         <label for="list-title" class="form-label"></label>
                         <input class="form-control mb-3" type="text" name="list-title" id="list-title" placeholder="List Title" required />
                         <button type="submit" class="btn btn-primary">Upload</button>
+                    </form>
+                </div>
+            </div>
+        <?php endif; ?>
+
+        <!-- Editing A List -->
+
+        <?php if (isset($_GET['current-list-title'])) : ?>
+            <div class="show-lists">
+                <div class="lists-contents">
+                    <div class="close-show-list">+</div>
+                    <p class="text-center">Current name: <?php echo $_GET['current-list-title']; ?></p>
+
+                    <form action="/app/users/lists/edit-list-name.php" method="post">
+                        <input type="hidden" name="id" value="<?php echo $_SESSION['user']['id'] ?>" id="id" />
+                        <input type="hidden" name="current-list-title" value="<?php echo $_GET['current-list-title']; ?>" id="current-list-title" />
+
+                        <label for="new-list-title" class="form-label"></label>
+                        <input class="form-control" type="text" name="new-list-title" id="new-list-title" placeholder="New List Name" required />
+                        <button type="submit" class="btn btn-primary mt-3">Upload</button>
                     </form>
                 </div>
             </div>
@@ -173,13 +194,12 @@
             </div>
         <?php endif; ?>
 
-
         <!-- Creating New Task -->
 
         <?php if (isset($_GET['current-list'])) : ?>
-            <div class="new-list-container">
-                <div class="contents">
-                    <div class="close-btn">+</div>
+            <div class="show-lists">
+                <div class="lists-contents">
+                    <div class="close-show-list">+</div>
                     <p>Current List: <?php echo $_GET['current-list']; ?></p>
 
                     <form action="/app/users/tasks/create-task.php" method="post">
@@ -201,27 +221,7 @@
                 </div>
             </div>
         <?php endif; ?>
-
-        <!-- Editing A List -->
-
-        <?php if (isset($_GET['current-list-title'])) : ?>
-            <div class="new-list-container">
-                <div class="contents">
-                    <div class="close-btn">+</div>
-                    <p class="text-center">Current name: <?php echo $_GET['current-list-title']; ?></p>
-
-                    <form action="/app/users/lists/edit-list-name.php" method="post">
-                        <input type="hidden" name="id" value="<?php echo $_SESSION['user']['id'] ?>" id="id" />
-                        <input type="hidden" name="current-list-title" value="<?php echo $_GET['current-list-title']; ?>" id="current-list-title" />
-
-                        <label for="new-list-title" class="form-label"></label>
-                        <input class="form-control" type="text" name="new-list-title" id="new-list-title" placeholder="New List Name" required />
-                        <button type="submit" class="button">Upload</button>
-                    </form>
-                </div>
-            </div>
-        <?php endif; ?>
-
+        <script src="/assets/scripts/add-list.js"></script>
     <?php else : ?>
         <div class="show-todo-section">
             <p class="text-center">Login or sign in to create tasks</p>
@@ -232,7 +232,6 @@
                 </div>
             </div>
         </div>
-        <!-- Start -->
     <?php endif; ?>
 </div>
 

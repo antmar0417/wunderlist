@@ -20,4 +20,4 @@ if (isset($_POST['password'], $_POST['id'])) {
     $statement->execute();
 }
 
-redirect('/profile.php');
+redirect('/index.php');

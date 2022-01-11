@@ -1,11 +1,6 @@
-// const openButton = document.getElementById('open-button');
-// const popUpList = document.querySelector('.pop-up-add-list');
-// const closeAddList = document.querySelector('.close-add-list');
+const closeLists = document.querySelector('.close-show-list');
+const allLists = document.querySelector('.show-lists');
 
-// openButton.addEventListener('click', () => {
-//   popUpList.style.display = 'flex';
-// });
-
-// closeAddList.addEventListener('click', () => {
-//   popUpList.style.display = 'none';
-// });
+closeLists.addEventListener('click', () => {
+  allLists.style.display = 'none';
+});
