@@ -224,7 +224,7 @@
         <script src="/assets/scripts/add-list.js"></script>
     <?php else : ?>
         <div class="show-todo-section">
-            <p class="text-center">Login or sign in to create tasks</p>
+            <p class="text-center">Login or sign in to create a list</p>
             <div class="todo-item">
                 <div class="empty">
                     <img src="./images/to-do-list.jpeg" width="100%" />
