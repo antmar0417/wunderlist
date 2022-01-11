@@ -1,3 +1,13 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  background: #34495e;
+}
+
 .change-list-name {
   height: 160px;
   width: 100%;
@@ -68,3 +78,65 @@
   margin-left: 5px;
   margin-top: 14px;
 } */
+
+/* Guest CSS */
+.show-todo-section {
+  width: 100%;
+  background: #fff;
+  margin: 30px auto;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.todo-item {
+  width: 95%;
+  margin: 10px auto;
+  padding: 20px 10px;
+  box-shadow: 0 4px 8px 0 #ccc, 0 6px 20px 0 #ccc;
+  border-radius: 5px;
+  /* background-color: honeydew; */
+}
+
+.empty {
+  font-family: sans-serif;
+  font-size: 16px;
+  text-align: center;
+  color: #cccc;
+}
+
+.main-section {
+  background: transparent;
+  max-width: 500px;
+  width: 90%;
+  margin: 30px auto;
+  border-radius: 10px;
+}
+
+/* Login CSS */
+.login {
+  width: 700px;
+  background-color: #fff;
+  margin: 30px auto;
+  border-radius: 5px;
+  padding: 40px 10px;
+  border: 1px solid rgb(0, 0, 0);
+}
+
+/* Create account */
+.create-account {
+  width: 700px;
+  background-color: #fff;
+  margin: 30px auto;
+  border-radius: 5px;
+  padding: 40px 10px;
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.customize-profile {
+  width: 700px;
+  background-color: #fff;
+  margin: 30px auto;
+  border-radius: 5px;
+  padding: 40px 10px;
+  border: 1px solid rgb(0, 0, 0);
+}
