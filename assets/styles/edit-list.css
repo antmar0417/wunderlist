@@ -8,6 +8,11 @@ body {
   background: #34495e;
 }
 
+.lists-contents img {
+  width: 50px;
+  border-radius: 30%;
+}
+
 .change-list-name {
   height: 160px;
   width: 100%;
@@ -19,13 +24,13 @@ body {
 }
 
 .show-lists {
-  padding-left: 40px;
+  /* padding-left: 40px; */
   justify-content: center;
   align-items: center;
   background-color: rgb(0, 255, 255);
 }
 
-.show-lists-button {
+/* .show-lists-button {
   background-color: #1686d9;
   border: 2px solid rgb(45, 68, 194);
   border-radius: 15px;
@@ -40,7 +45,7 @@ body {
   background-color: white;
   color: #1686d9;
   border: 2px solid #1686d9;
-}
+} */
 
 .lists-contents {
   width: 700px;
@@ -79,17 +84,8 @@ body {
   margin-top: 14px;
 } */
 
-/* Guest CSS */
-.show-todo-section {
-  width: 100%;
-  background: #fff;
-  margin: 30px auto;
-  padding: 10px;
-  border-radius: 5px;
-}
-
 .todo-item {
-  width: 95%;
+  width: 85%;
   margin: 10px auto;
   padding: 20px 10px;
   box-shadow: 0 4px 8px 0 #ccc, 0 6px 20px 0 #ccc;
@@ -106,10 +102,19 @@ body {
 
 .main-section {
   background: transparent;
-  max-width: 500px;
+  max-width: 700px;
   width: 90%;
   margin: 30px auto;
   border-radius: 10px;
+}
+
+/* Guest CSS */
+.show-todo-section {
+  width: 100%;
+  background: #fff;
+  margin: 30px auto;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 /* Login CSS */

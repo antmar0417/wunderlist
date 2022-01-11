@@ -1,59 +1,48 @@
 <?php require __DIR__ . '/app/autoload.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
 
-<!-- <div class="row mt-4 justify-content-md-center">
-    <div class="col-md-3 ml-center">
-        <h3 class="text-center"></h3>
-    </div>
-</div> -->
 <div class="main-section">
     <?php if (isLoggedIn()) : ?>
         <div class="row mt-4 justify-content-md-center">
             <div class="col-md-3 ml-center">
-                <p class="text-center">Welcome, <?php echo $_SESSION['user']['name']; ?>!</p>
+                <p class="text-center text-white">Welcome, <?php echo $_SESSION['user']['name']; ?>!</p>
             </div>
         </div>
         <div class="d-flex justify-content-center">
-            <img src="<?= checkIfAvatarExist(); ?>" alt="avatar photo" height="100px">
+            <a href="index.php?list=all" id="show-lists-button" class="btn btn-primary">Show Lists</a>
         </div>
 
-        <!-- Adding New List -->
+        <!-- Showing All Lists -->
 
-        <div class="change-list">
-            <div>
-                <h2>Click on the button to create list</h2>
-                <!-- <a href="#" id="open-button" class="button">Add List</a> -->
-                <button id="open-button" class="button">Add List</button>
+        <?php if (isset($_GET['list'])) : ?>
+            <?php require __DIR__ . '/app/users/lists/get-all-lists.php'; ?>
+            <div class="show-lists">
+                <div class="lists-contents">
+                    <div class="close-show-list">+</div>
+                    <img src="<?= checkIfAvatarExist(); ?>" alt="avatar photo" />
+                    <?php require __DIR__ . '/show-lists.php'; ?>
+                    <a href="index.php?lists=show">Create New List</a>
+                </div>
             </div>
+        <?php endif; ?>
 
-            <div class="pop-up-add-list">
-                <div class="pop-up-contents">
-                    <div class="close-add-list">+</div>
+        <!-- Creating A List -->
+
+        <?php if (isset($_GET['lists'])) : ?>
+            <div class="show-lists">
+                <div class="lists-contents">
+                    <div class="close-show-list">+</div>
                     <img src="<?= checkIfAvatarExist(); ?>" alt="avatar photo" />
 
                     <form action="/app/users/lists/add-list.php" method="post">
                         <input type="hidden" name="id" value="<?php echo $_SESSION['user']['id'] ?>" id="id" />
 
                         <label for="list-title" class="form-label"></label>
-                        <input class="form-control" type="text" name="list-title" id="list-title" placeholder="List Title" required />
-                        <!-- <a href="index.php" class="button">Submit</a> -->
-                        <button type="submit" class="button">Upload</button>
+                        <input class="form-control mb-3" type="text" name="list-title" id="list-title" placeholder="List Title" required />
+                        <button type="submit" class="btn btn-primary">Upload</button>
                     </form>
                 </div>
             </div>
-        </div>
-
-        <!-- Showing The Lists -->
-
-        <div class="change-list-name">
-            <div>
-                <h2>Click on the button to see yor lists</h2>
-                <a href="index.php?list=all" id="show-lists-button" class="show-lists-button">Show Lists</a>
-            </div>
-        </div>
-        <?php if (isset($_GET['list'])) : ?>
-            <?php require __DIR__ . '/app/users/lists/get-all-lists.php'; ?>
-            <?php require __DIR__ . '/show-lists.php'; ?>
         <?php endif; ?>
 
         <!-- Showing All Tasks -->
@@ -64,10 +53,10 @@
             <div class="show-lists">
                 <div class="lists-contents">
                     <div class="close-show-list">+</div>
+                    <img src="<?= checkIfAvatarExist(); ?>" alt="avatar photo" />
                     <p>Showing <?php echo $_GET['show-all-tasks'] ?> tasks</p>
                     <!-- Tasks Table -->
                     <?php require __DIR__ . '/tasks-table.php'; ?>
-                    <!-- END -->
                 </div>
             </div>
 
@@ -86,7 +75,6 @@
                     ?>
                     <!-- Tasks Table -->
                     <?php require __DIR__ . '/tasks-table.php'; ?>
-                    <!-- END -->
                 </div>
             </div>
         <?php endif; ?>
@@ -99,10 +87,9 @@
             <div class="show-lists">
                 <div class="lists-contents">
                     <div class="close-show-list">+</div>
+                    <img src="<?= checkIfAvatarExist(); ?>" alt="avatar photo" />
                     <p>Current list: <?php echo $_GET['show-tasks-within-list']; ?> </p>
-                    <!-- Tasks Table -->
                     <?php require __DIR__ . '/tasks-table.php'; ?>
-                    <!-- END -->
                     <a href="index.php?current-list=<?php echo $_GET['show-tasks-within-list']; ?>" id="">Create New Task</a>
                 </div>
             </div>
@@ -236,14 +223,6 @@
         <?php endif; ?>
 
     <?php else : ?>
-        <!-- <div class="row mt-4 justify-content-md-center">
-        <div class="col-md-3 ml-center">
-            <p class="text-center">Login or Sign in to create tasks</p>
-        </div>
-    </div> -->
-        <!-- <div class="row mt-0 justify-content-md-center">
-        <img src="./images/to-do-list.jpeg" alt="to-do list photo">
-    </div> -->
         <div class="show-todo-section">
             <p class="text-center">Login or sign in to create tasks</p>
             <div class="todo-item">

@@ -1,7 +1,9 @@
-const editListButtons = document.querySelectorAll('#edit-button');
+console.log('hello');
 
-editListButtons.forEach((editListButton) => {
-  editListButton.addEventListener('click', () => {
-    console.log('hello');
-  });
-});
+// const editListButtons = document.querySelectorAll('#edit-button');
+
+// editListButtons.forEach((editListButton) => {
+//   editListButton.addEventListener('click', () => {
+//     console.log('hello');
+//   });
+// });
