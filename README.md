@@ -4,11 +4,30 @@
 
 # Wunderlist
 
-Text about the project and why it exists. This would also be a great place to link the project online.
+The purpose of this individual assignment was to create a to-do list application using PHP, HTML, CSS, JavaScript.
 
 # Installation
 
-Add the installation instructions.
+To run this project follow the steps below:
+
+-   Open the terminal and change the current working directory to the location where you want the cloned directory.
+
+-   Clone the project by pasting the command below
+
+    ```
+    git clone https://github.com/antmar0417/the-elephant-assignment.git
+    ```
+
+-   Start php server by typing
+
+    ```
+    php -S localhost:8000
+    ```
+
+-   Open up you browser and paste in this link:
+    ```
+    http://localhost:8000/index.php
+    ```
 
 # Code Review
 
@@ -29,5 +48,5 @@ Code review written by [Jane Doh](https://github.com/username).
 
 Tested by the following people:
 
-1. Jane Doe
+1. Oliver Davis
 2. John Doe
