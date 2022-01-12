@@ -28,10 +28,10 @@
                 <h5>Change your email address</h5>
                 <form action="/app/users/email/upload.php" method="post">
                     <div class="input-group mb-3">
-                        <input type="hidden" name="id" value="<?= $_SESSION['user']['id'] ?>" id="id">
+                        <input type="hidden" name="id" value="<?php echo $_SESSION['user']['id']; ?>" id="id">
 
                         <label for="email" class="form-label"></label>
-                        <input class="form-control" type="email" name="email" id="email" placeholder="<?= $_SESSION['user']['email'] ?>" required>
+                        <input class="form-control" type="email" name="email" id="email" value="<?php echo $_SESSION['user']['email']; ?>" required>
 
                         <button type="submit" class="btn btn-primary offset-2">Change</button>
                     </div>
@@ -40,7 +40,7 @@
                 <h5>Change your password</h5>
                 <form action="/app/users/password/upload.php" method="post">
                     <div class="input-group mb-3">
-                        <input type="hidden" name="id" value="<?= $_SESSION['user']['id'] ?>">
+                        <input type="hidden" name="id" value="<?php echo $_SESSION['user']['id']; ?>">
 
                         <label for="password" class="form-label"></label>
                         <input class="form-control" name="password" id="password" type="password" required>
