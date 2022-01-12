@@ -5,7 +5,7 @@
     <?php if (isLoggedIn()) : ?>
         <div class="row mt-4 justify-content-md-center">
             <div class="col-md-3 ml-center">
-                <p class="text-center text-white">Welcome, <?php echo $_SESSION['user']['name']; ?>!</p>
+                <p class="text-center text-white">Welcome, <?php echo htmlspecialchars($_SESSION['user']['name']); ?>!</p>
             </div>
         </div>
         <div class="d-flex justify-content-center">
@@ -52,7 +52,7 @@
             <div class="show-lists">
                 <div class="lists-contents">
                     <div class="close-show-list">+</div>
-                    <p class="text-center">Current name: <?php echo $_GET['current-list-title']; ?></p>
+                    <p class="text-center">Current name: <?php echo htmlspecialchars($_GET['current-list-title']); ?></p>
 
                     <form action="/app/users/lists/edit-list-name.php" method="post">
                         <input type="hidden" name="id" value="<?php echo $_SESSION['user']['id'] ?>" id="id" />
@@ -75,7 +75,7 @@
                 <div class="lists-contents">
                     <div class="close-show-list">+</div>
                     <img src="<?= checkIfAvatarExist(); ?>" alt="avatar photo" />
-                    <p>Showing <?php echo $_GET['show-all-tasks'] ?> tasks</p>
+                    <p>Showing <?php echo htmlspecialchars($_GET['show-all-tasks']); ?> tasks</p>
                     <!-- Tasks Table -->
                     <?php require __DIR__ . '/tasks-table.php'; ?>
                 </div>
@@ -121,20 +121,12 @@
 
         <?php if (isset($_GET['task-id'])) : ?>
             <?php require __DIR__ . '/app/users/lists/get-all-list-suggestions.php'; ?>
-            <?php $tasks = getAllTasks($database, $_SESSION['user']['id']); ?>
-
-            <?php foreach ($tasks as $task) : ?>
-                <?php if ($task['id'] === $_GET['task-id']) : ?>
-                    <?php $taskTitlePlaceholder = $task['title']; ?>
-                    <?php $taskContentPlaceholder = $task['content']; ?>
-                    <?php $listTitlePlaceholder = $task['list_title']; ?>
-                <?php endif; ?>
-            <?php endforeach; ?>
+            <?php $task = getTaskById($database, $_SESSION['user']['id'], $_GET['task-id']); ?>
 
             <div class="show-lists">
                 <div class="lists-contents">
                     <div class="close-show-list">+</div>
-                    <p>Current list: <?php echo $listTitlePlaceholder; ?></p>
+                    <p>Current list: <?php echo htmlspecialchars($task['list_title']); ?></p>
 
                     <!-- Updating The Date -->
 
@@ -155,10 +147,10 @@
                         <input type="hidden" name="task-id" value="<?php echo $_GET['task-id']; ?>" id="task-id" />
 
                         <label for="task-title" class="form-label"></label>
-                        <input class="form-control" type="text" name="task-title" id="task-title" placeholder="<?php echo $taskTitlePlaceholder; ?>" required />
+                        <input class="form-control" type="text" name="task-title" id="task-title" value="<?php echo htmlspecialchars($task['title']); ?>" required />
 
                         <label for="quote" class="form-label"></label>
-                        <textarea name="quote" id="quote" class="form-control mb-3" placeholder="<?php echo $taskContentPlaceholder; ?>" required></textarea>
+                        <textarea name="quote" id="quote" class="form-control mb-3" placeholder="<?php echo htmlspecialchars($task['content']); ?>" required></textarea>
 
                         <button type="submit" class="btn btn-sm btn-primary mb-4">Change</button>
                     </form>
@@ -173,23 +165,21 @@
                             <select class="form-select" name="move-task-to-list" id="move-task-to-list">
                                 <option selected>Celect a list</option>
                                 <?php foreach ($lists as $list) : ?>
-                                    <option><?php echo $list['title']; ?></option>
+                                    <option><?php echo htmlspecialchars($list['title']); ?></option>
                                 <?php endforeach; ?>
                             </select>
 
                             <button class="btn btn-primary" type="submit">Change</button>
                         </div>
                     </form>
-                    <?php foreach ($tasks as $task) : ?>
-                        <?php if ($task['checked'] === 'No' && $task['id'] === $_GET['task-id']) : ?>
-                            <a href="/app/users/tasks/finished-task.php?finished-task-id=<?php echo $_GET['task-id']; ?>" class="btn btn-sm btn-success" id="edit-button">
-                                Completed
-                            </a>
-                        <?php endif; ?>
-                        <?php if ($task['checked'] === 'Yes' && $task['id'] === $_GET['task-id']) : ?>
-                            <a href="/app/users/tasks/unfinished-task.php?unfinished-task-id=<?php echo $_GET['task-id']; ?>" class="btn btn-sm btn-danger">Unfinished</a>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
+                    <?php if ($task['checked'] === 'No') : ?>
+                        <a href="/app/users/tasks/finished-task.php?finished-task-id=<?php echo $_GET['task-id']; ?>" class="btn btn-sm btn-success" id="edit-button">
+                            Completed
+                        </a>
+                    <?php endif; ?>
+                    <?php if ($task['checked'] === 'Yes') : ?>
+                        <a href="/app/users/tasks/unfinished-task.php?unfinished-task-id=<?php echo $_GET['task-id']; ?>" class="btn btn-sm btn-danger">Unfinished</a>
+                    <?php endif; ?>
                 </div>
             </div>
         <?php endif; ?>
@@ -200,7 +190,7 @@
             <div class="show-lists">
                 <div class="lists-contents">
                     <div class="close-show-list">+</div>
-                    <p>Current List: <?php echo $_GET['current-list']; ?></p>
+                    <p>Current List: <?php echo htmlspecialchars($_GET['current-list']); ?></p>
 
                     <form action="/app/users/tasks/create-task.php" method="post">
                         <input type="hidden" name="id" value="<?php echo $_SESSION['user']['id'] ?>" id="id" />
