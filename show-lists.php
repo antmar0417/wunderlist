@@ -14,7 +14,7 @@
         <?php foreach ($lists as $list) : ?>
             <tr>
                 <td>
-                    <a href="index.php?show-tasks-within-list=<?php echo $list['title']; ?>"><?php echo $list['title']; ?></a>
+                    <a href="index.php?show-tasks-within-list=<?php echo $list['title']; ?>"><?php echo htmlspecialchars($list['title']); ?></a>
                 </td>
                 <td>
                     <a href="index.php?current-list-title=<?php echo $list['title']; ?>" class="btn btn-sm btn-primary" id="edit-button">
