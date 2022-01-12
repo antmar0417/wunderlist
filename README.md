@@ -49,4 +49,4 @@ Code review written by [Sofia Rönnkvist](https://github.com/sofiaronnkvist).
 Tested by the following people:
 
 1. Oliver Davis
-2. John Doe
+2. Sofia Rönnkvist
