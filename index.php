@@ -221,7 +221,7 @@
                 </div>
             </div>
         <?php endif; ?>
-        <script src="/assets/scripts/add-list.js"></script>
+        <script src="/assets/scripts/app.js"></script>
     <?php else : ?>
         <div class="show-todo-section">
             <p class="text-center">Login or sign in to create a list</p>
