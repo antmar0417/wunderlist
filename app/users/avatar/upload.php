@@ -8,9 +8,11 @@ if (isset($_FILES['avatar'], $_POST['id'])) {
     $avatar = $_FILES['avatar'];
 
     // Adding the user id and date into the image name
-    $avatarName = $_SESSION['user']['id'] . '-' . date('ymd') . '-' . $avatar['name'];
-    $destination = __DIR__ . '/../../../uploads' . '/' . $avatarName;
-    move_uploaded_file($avatar['tmp_name'], $destination);
+    if ($avatar['size'] <= 3097152) {
+        $avatarName = $_SESSION['user']['id'] . '-' . date('ymd') . '-' . $avatar['name'];
+        $destination = __DIR__ . '/../../../uploads' . '/' . $avatarName;
+        move_uploaded_file($avatar['tmp_name'], $destination);
+    }
 
     // Updating the image src into database
     $id = trim($_POST['id']);
