@@ -31,18 +31,18 @@ To run this project follow the steps below:
 
 # Code Review
 
-Code review written by [Jane Doh](https://github.com/username).
+Code review written by [Sofia Rönnkvist](https://github.com/sofiaronnkvist).
 
-1. `example.js:10-15` - Remember to think about X and this could be refactored using the amazing Y function.
-2. `example.js:10-15` - Remember to think about X and this could be refactored using the amazing Y function.
-3. `example.js:10-15` - Remember to think about X and this could be refactored using the amazing Y function.
-4. `example.js:10-15` - Remember to think about X and this could be refactored using the amazing Y function.
-5. `example.js:10-15` - Remember to think about X and this could be refactored using the amazing Y function.
-6. `example.js:10-15` - Remember to think about X and this could be refactored using the amazing Y function.
-7. `example.js:10-15` - Remember to think about X and this could be refactored using the amazing Y function.
-8. `example.js:10-15` - Remember to think about X and this could be refactored using the amazing Y function.
-9. `example.js:10-15` - Remember to think about X and this could be refactored using the amazing Y function.
-10. `example.js:10-15` - Remember to think about X and this could be refactored using the amazing Y function.
+1. `users/register.php:11` - You should make sure that the user chooses a strong password, at least 16 characters.
+2. `users/avatar/upload.php:13` - Your folder uploads can't be found, and isn't created when a new avatar is uploaded.
+3. `index.php:general` - A back button of some sorts would be nice, so you don't have to push X every time you want to go back.
+4. `users/register.php` - You only have to validate data at this stage, not sanitize it.
+5. `users/register.php` - If you have unique fields in your database, like email, you need to handle if someone tries to create a new account with an already existing email.
+6. `/app/users/email/upload.php` - Same thing here, if I try to update to an email that already exists I should be notified.
+7. `functions.php:22` - This function could be written as return isset($\_SESSION['user']);, since it's set to return a bool.
+8. `header.php:10` - Nice job styling using some Bootstrap!
+9. `General` - Even though FILTER_SANITIZE_STRING is supposed to be deprecated, htmlspecialchars doesn't seem to sanitize output like for example a simple script the same way.
+10. `users/lists/delete-list.php` - You should always use bindParam instead of putting variables directly in your query. And here, since you've not prepared a queary, you don't need to run execute.
 
 # Testers
 
