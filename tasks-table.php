@@ -10,15 +10,15 @@
     <tbody>
         <?php foreach ($tasks as $task) : ?>
             <tr>
-                <td><?php echo $task['deadline_date']; ?></td>
+                <td><?php echo htmlspecialchars($task['deadline_date']); ?></td>
                 <td>
-                    <?php echo $task['checked']; ?>
+                    <?php echo htmlspecialchars($task['checked']); ?>
                 </td>
                 <td>
-                    <?php echo $task['title']; ?>
+                    <?php echo htmlspecialchars($task['title']); ?>
                 </td>
                 <td>
-                    <?php echo $task['content']; ?>
+                    <?php echo htmlspecialchars($task['content']); ?>
                 </td>
             </tr>
             <tr>
