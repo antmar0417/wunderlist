@@ -6,7 +6,7 @@ require __DIR__ . '/../../autoload.php';
 
 if (isset($_POST['list-title'], $_POST['id'])) {
     $user_id = trim($_POST['id']);
-    $title = $_POST['list-title'];
+    $title = trim($_POST['list-title']);
 
     $query = 'INSERT INTO lists (title, user_id) VALUES (:title, :user_id)';
 
