@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 if (isset($_GET['show-tasks-within-list'])) {
     $id = $_SESSION['user']['id'];
-    $title = $_GET['show-tasks-within-list'];
+    $title = trim($_GET['show-tasks-within-list']);
 
     $statement = $database->query("SELECT *
     FROM tasks
