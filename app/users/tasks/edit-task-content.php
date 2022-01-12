@@ -6,8 +6,8 @@ require __DIR__ . '/../../autoload.php';
 
 if (isset($_POST['task-id'], $_POST['task-title'], $_POST['quote'])) {
     $id = trim($_POST['task-id']);
-    $title = $_POST['task-title'];
-    $content = $_POST['quote'];
+    $title = trim($_POST['task-title']);
+    $content = trim($_POST['quote']);
 
     $query = "UPDATE tasks
     SET
