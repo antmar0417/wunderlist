@@ -15,7 +15,7 @@ To run this project follow the steps below:
 -   Clone the project by pasting the command below
 
     ```
-    git clone https://github.com/antmar0417/the-elephant-assignment.git
+    git clone https://github.com/antmar0417/wunderlist
     ```
 
 -   Start php server by typing
