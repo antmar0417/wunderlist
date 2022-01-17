@@ -112,6 +112,7 @@
                     <p>Current list: <?php echo $_GET['show-tasks-within-list']; ?> </p>
                     <?php require __DIR__ . '/tasks-table.php'; ?>
                     <a href="index.php?current-list=<?php echo $_GET['show-tasks-within-list']; ?>" id="">Create New Task</a>
+                    <a href="/app/users/tasks/finished-all-tasks.php?current-list=<?php echo $_GET['show-tasks-within-list']; ?>">Complete all tasks</a>
                 </div>
             </div>
 

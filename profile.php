@@ -48,6 +48,18 @@
                         <button type="submit" class="btn btn-primary offset-2">Change</button>
                     </div>
                 </form>
+
+                <h5>Delete account</h5>
+                <form action="/app/users/delete-account.php" method="post">
+                    <div class=" input-group mb-3">
+                        <input type="hidden" name="id" value="<?php echo $_SESSION['user']['id'] ?>" id="id" />
+
+                        <label for="delete-account" class="form-label"></label>
+                        <input class="form-control" type="email" name="delete-account" id="delete-account" placeholder="Enter your email to delete your account (this can not be undone)" required>
+
+                        <button type="submit" class="btn btn-primary offset-2">Delete account</button>
+                    </div>
+                </form>
             </div>
         </div>
     <?php else : ?>
