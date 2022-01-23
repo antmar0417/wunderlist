@@ -8,7 +8,6 @@ if (isset($_POST['delete-account'], $_POST['id'])) {
     $userId = $_POST['id'];
     $userEmail = trim($_POST['delete-account']);
 
-
     if ($userEmail === $_SESSION['user']['email']) {
 
         $statement = $database->prepare('DELETE FROM users WHERE id = :id');
