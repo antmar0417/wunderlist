@@ -50,3 +50,8 @@ Tested by the following people:
 
 1. Oliver Davis
 2. Sofia Rönnkvist
+
+-   Link to the pull request(s) adding the new features:
+    ```
+    https://github.com/antmar0417/wunderlist/commit/6764d691863a44e2ed5497476c0cb80331bb89ef
+    ```
