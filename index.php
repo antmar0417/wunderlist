@@ -164,7 +164,7 @@
                         <div class="input-group mb-3">
                             <label for="move-task-to-list" class="form-label"></label>
                             <select class="form-select" name="move-task-to-list" id="move-task-to-list">
-                                <option selected>Celect a list</option>
+                                <option selected>Select a list</option>
                                 <?php foreach ($lists as $list) : ?>
                                     <option><?php echo htmlspecialchars($list['title']); ?></option>
                                 <?php endforeach; ?>
